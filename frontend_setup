@@ -1,0 +1,6 @@
+# 创建React项目
+npx create-react-app frontend
+cd frontend
+npm install @mui/material @emotion/react @emotion/styled  # UI组件库
+npm install @reduxjs/toolkit react-redux  # 状态管理
+npm install axios react-router-dom  # API请求和路由 

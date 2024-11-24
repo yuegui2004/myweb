@@ -1,0 +1,15 @@
+ai-compare-platform/
+├── backend/
+│   ├── app/
+│   │   ├── api/
+│   │   ├── core/
+│   │   ├── models/
+│   │   ├── schemas/
+│   │   └── services/
+│   ├── alembic/
+│   ├── tests/
+│   └── main.py
+├── frontend/
+│   ├── public/
+│   └── src/
+└── docker/ 

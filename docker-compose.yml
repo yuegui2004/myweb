@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - POSTGRES_USER=garytest2024
+      - POSTGRES_PASSWORD=Garytest@123
+      - POSTGRES_HOST=172.16.32.13
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=mywebtest
+      - REDIS_URL=redis://redis:6379
+      - SECRET_KEY=your-super-secret-key-here
+    depends_on:
+      - redis
+    networks:
+      - app-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge 
